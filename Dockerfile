@@ -9,6 +9,11 @@ RUN apk add --no-cache postgresql-libs \
 ADD . /code
 WORKDIR /code
 
+RUN  mkdir -p geolite2 \
+    && curl -o geolite2/GeoLite2-Country.tar.gz https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz \
+    && tar -xvf geolite2/GeoLite2-Country.tar.gz -C geolite2 \
+    && mv geolite2/GeoLite2*/* geolite2
+
 ADD requirements/base.txt /requirements.txt
 RUN pip install --upgrade pip
 RUN pip --no-cache-dir install -r /requirements.txt

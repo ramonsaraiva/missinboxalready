@@ -3,3 +3,4 @@
 .python-version
 .env
 staticfiles
+geolite2

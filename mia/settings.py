@@ -1,4 +1,5 @@
 import environ
+import geoip2.database
 import os
 
 from pathlib import Path
@@ -84,3 +85,5 @@ STATICFILES_DIRS = [
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+GEOIP_READER = geoip2.database.Reader('geolite2/GeoLite2-Country.mmdb')
