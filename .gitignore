@@ -1,0 +1,5 @@
+*.swp
+*.py[cod]
+.python-version
+.env
+staticfiles

@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+
+  nginx:
+    restart: always
+    image: nginx:1.14.2-alpine
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+
+  web:
+    restart: always
+    build: .
+    command: sh -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn mia.wsgi -w 2 -b 0.0.0.0:8000 --reload"
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgres://mia:mia@db:5432/mia
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    restart: always
+    image: mdillon/postgis:11-alpine
+    volumes:
+      - pgdata:/var/lib/postgresql/data 
+    environment:
+      POSTGRES_USER: mia
+      POSTGRES_PASSWORD: mia
+      POSTGRES_DB: mia
+
+volumes:
+  pgdata:
