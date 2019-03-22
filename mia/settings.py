@@ -29,6 +29,7 @@ DJANGO_APPS = [
 ]
 
 EXTERNAL_APPS = [
+    'rest_framework',
 ]
 
 LOCAL_APPS = [

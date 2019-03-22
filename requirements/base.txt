@@ -5,3 +5,4 @@ psycopg2==2.7.7
 django-environ==0.4.5
 geoip2==2.9.0
 django-model-utils==3.1.2
+djangorestframework==3.9.2

@@ -18,7 +18,11 @@ class MisserManager(models.Manager):
 
     def create_with_ip(self, ip):
         reader = settings.GEOIP_READER
-        country_name = reader.country(ip).country.name
+        try:
+            country_name = reader.country(ip).country.name
+        except Exception:
+            country_name = 'Undefined'
+
         country, _ = Country.objects.get_or_create(name=country_name)
         return self.get_queryset().create(ip=ip, country=country)
 
