@@ -73,6 +73,11 @@ body {
     cursor: pointer;
 }
 
+.header__cta:disabled {
+    background-color: gray;
+    cursor: pointer;
+}
+
 .header__statistics {
     position: absolute;
     top: 85vh;
