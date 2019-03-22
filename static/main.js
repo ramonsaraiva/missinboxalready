@@ -34,15 +34,17 @@ let post_misser = function() {
 
 let miss_it = function() {
     cta_element.setAttribute('disabled', 'disabled')
-    cta_element.innerHTML = 'You miss it already!';
+    cta_element.innerHTML = 'Thanks for letting us know you miss it as well';
     localStorage.setItem('misses', true);
 };
 
-window.setInterval(poll_count, 5000);
+window.onload = function() {
+    window.setInterval(poll_count, 5000);
 
-if (localStorage.getItem('misses')) {
-    miss_it();
-}
-else {
-    cta_element.addEventListener('click', post_misser);
-}
+    if (localStorage.getItem('misses')) {
+        miss_it();
+    }
+    else {
+        cta_element.addEventListener('click', post_misser);
+    }
+};
