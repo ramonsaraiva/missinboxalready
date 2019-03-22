@@ -1,5 +1,6 @@
 from model_utils.models import TimeStampedModel
 
+from django.conf import settings
 from django.db import models
 
 
@@ -16,8 +17,10 @@ class Country(TimeStampedModel):
 class MisserManager(models.Manager):
 
     def create_with_ip(self, ip):
-        # deal with geoip
-        return None
+        reader = settings.GEOIP_READER
+        country_name = reader.country(ip).country.name
+        country, _ = Country.objects.get_or_create(name=country_name)
+        return self.get_queryset().create(ip=ip, country=country)
 
 
 class Misser(TimeStampedModel):
@@ -30,4 +33,4 @@ class Misser(TimeStampedModel):
         return f'<Misser from {self.country}>'
 
     def __str__(self) -> str:
-        return self.country
+        return f'Misser from  {self.country}'
