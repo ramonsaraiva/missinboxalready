@@ -1,0 +1,22 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Miss Inbox Already</title>
+        <meta name="description" content="We all miss Google Inbox already">
+        <meta name="author" content="Ramon Saraiva">
+
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Merriweather:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'main.css' %}">
+    </head>
+
+    <body>
+        {% block content %}
+        {% endblock %}
+        <script type="text/javascript" src="{% static 'main.js' %}"></script>
+    </body>
+</html>
