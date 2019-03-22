@@ -3,6 +3,9 @@
 
 {% block content %}
     <header class="header">
+        <div class="header__github">
+            <a class="github-button" href="https://github.com/ramonsaraiva/missinboxalready" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ramonsaraiva/missinboxalready on GitHub">Star</a>
+        </div>
         <img class="header__logo" src="{% static 'inbox.png' %}" />
         <h1 class="header__missers"><span class="js-counter">{{ object_list|length }}</span> people miss Google Inbox already</h1>
         <p class="header__death">October 22, 2014 - March 31, 2019 &dagger;</p>

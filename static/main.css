@@ -30,6 +30,12 @@ body {
     color: white;
 }
 
+.header__github {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
 .header__logo {
     width: 150px;
     height: 150px;
