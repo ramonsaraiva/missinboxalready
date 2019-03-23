@@ -60,6 +60,13 @@ class MissersViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
     queryset = Misser.objects.all()
     serializer_class = MisserSerializer
 
+    def get_throttles(self):
+        if self.action == 'create':
+            self.throttle_scope = 'missers.misser'
+        else:
+            self.throttle_scope = 'missers.count'
+        return super().get_throttles()
+
     @action(detail=False)
     def count(self, request):
         return Response({'count': self.get_queryset().count()})

@@ -93,7 +93,6 @@ STATICFILES_FINDERS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 COMPRESS_ENABLED = True
 COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',
@@ -101,3 +100,13 @@ COMPRESS_CSS_FILTERS = [
 ]
 
 GEOIP_READER = geoip2.database.Reader('geolite2/GeoLite2-Country.mmdb')
+
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.ScopedRateThrottle',
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'missers.misser': '10/minute',
+        'missers.count': '100/minute'
+    }
+}
