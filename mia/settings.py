@@ -63,6 +63,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'missers.context_processors.analytics',
             ],
         },
     },
@@ -110,3 +111,5 @@ REST_FRAMEWORK = {
         'missers.count': '100/minute'
     }
 }
+
+GTM_CONTAINER = env.str('GTM_CONTAINER')
