@@ -17,6 +17,7 @@ class MissersView(ListView):
     template_name = 'missers/missers.html'
 
     def identify_others(self, countries, total, cap=0.05):
+        """Countries with less than 5% missers will be classified as Others"""
         for name, count in countries.items():
             if (count / total) < cap or name == 'Undefined':
                 yield (name, count)
@@ -34,13 +35,24 @@ class MissersView(ListView):
         }
         total = len(self.object_list) - countries['Undefined']
 
+        # classify countries with less than 5% missers as 'Others'
         others = list(self.identify_others(countries, total))
         countries['Others'] = 0
         for name, count in others:
             del countries[name]
             countries['Others'] += count
 
+        chart_labels = []
+        chart_dataset = []
+        for name, count in countries.items():
+            chart_labels.append(name)
+            chart_dataset.append(count)
+
         context['countries'] = countries
+        context['chart_data'] = {
+            'chart_labels': chart_labels,
+            'chart_dataset': chart_dataset,
+        }
         return context
 
 

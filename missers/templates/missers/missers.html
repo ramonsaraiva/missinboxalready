@@ -13,12 +13,10 @@
         <a href="#statistics" class="header__statistics">Check out who misses it by country <span>&darr;</span></a>
     </header>
     <section id="statistics" class="statistics">
-        <ul class="statistics__list">
-            {% for country, count in countries.items %}
-            <li class="statistics__list__item">
-                <span class="statistics__list__country">{{ country }}</span> <span class="statistics__list__count">{{ count }}</span>
-            </li>
-            {% endfor %}
-        </ul>
+        <canvas id="statistics-chart" style="max-height: 1000px; max-width: 1000px;"</canvas>
     </section>
+    <script>
+        let chart_labels = {{ chart_data.chart_labels|safe }};
+        let chart_dataset = {{ chart_data.chart_dataset|safe }};
+    </script>
 {% endblock %}

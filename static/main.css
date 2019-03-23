@@ -103,34 +103,8 @@ body {
 
 .statistics {
     padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-size: cover;
-    justify-content: center;
-    font-size: 2vh;
-    font-family: 'Lora', serif;
 }
 
-.statistics__list {
-    list-style-type: none;
-    width: 200px;
-}
-
-.statistics__list__item {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.statistics__list__country {
-    color: black;
-}
-
-.statistics__list__count {
-    margin-left: 20px;
-    font-weight: 800;
-    color: #3358c0;
+#statistics-chart {
+    margin: 0 auto;
 }
