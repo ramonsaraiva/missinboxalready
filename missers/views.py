@@ -34,7 +34,7 @@ class MissersView(ListView):
             for country in countries
         }
         # avoid divisions by 0 lol
-        total = (len(self.object_list) - countries['Undefined']) or 1
+        total = (len(self.object_list) - countries.get('Undefined', 0)) or 1
 
         # classify countries with less than 5% missers as 'Others'
         others = list(self.identify_others(countries, total))
