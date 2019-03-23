@@ -1,6 +1,6 @@
-{% load static %}
 <!doctype html>
-
+{% load static %}
+{% load compress %}
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -11,7 +11,9 @@
         <meta name="author" content="Ramon Saraiva">
 
         <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Merriweather:400,700" rel="stylesheet">
+        {% compress css inline %}
         <link rel="stylesheet" href="{% static 'main.css' %}">
+        {% endcompress %}
     </head>
 
     <body>
@@ -22,6 +24,8 @@
         </script>
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+        {% compress js inline %}
         <script type="text/javascript" src="{% static 'main.js' %}"></script>
+        {% endcompress %}
     </body>
 </html>

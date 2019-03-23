@@ -30,6 +30,7 @@ DJANGO_APPS = [
 
 EXTERNAL_APPS = [
     'rest_framework',
+    'compressor',
 ]
 
 LOCAL_APPS = [
@@ -85,7 +86,18 @@ STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 STATICFILES_DIRS = [
     BASE_DIR.joinpath('static'),
 ]
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+COMPRESS_ENABLED = True
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter',
+]
 
 GEOIP_READER = geoip2.database.Reader('geolite2/GeoLite2-Country.mmdb')
