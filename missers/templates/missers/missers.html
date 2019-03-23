@@ -13,11 +13,10 @@
         <a href="#statistics" class="header__statistics">Check out who misses it by country <span>&darr;</span></a>
     </header>
     <section id="statistics" class="statistics">
-        {% regroup object_list by country as country_list %}
         <ul class="statistics__list">
-            {% for country in country_list %}
+            {% for country, count in countries.items %}
             <li class="statistics__list__item">
-                <span class="statistics__list__country">{{ country.grouper }}</span> <span class="statistics__list__count">{{ country.list|length }}</span>
+                <span class="statistics__list__country">{{ country }}</span> <span class="statistics__list__count">{{ count }}</span>
             </li>
             {% endfor %}
         </ul>
