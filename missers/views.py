@@ -16,7 +16,7 @@ class MissersView(ListView):
     model = Misser
     template_name = 'missers/missers.html'
 
-    def identify_others(self, countries, total, cap=0.01):
+    def identify_others(self, countries, total, cap=0.005):
         """Countries with less than 5% missers will be classified as Others"""
         for name, count in countries.items():
             if (count / total) < cap or name == 'Undefined':
