@@ -38,3 +38,13 @@ class Misser(TimeStampedModel):
 
     def __str__(self) -> str:
         return f'Misser from  {self.country}'
+
+
+class Blacklisted(TimeStampedModel):
+    ip = models.GenericIPAddressField()
+
+    def __repr__(self) -> str:
+        return f'<Blacklisted {self.ip}>'
+
+    def __str__(self) -> str:
+        return f'Blacklisted {self.ip}'
